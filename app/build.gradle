@@ -50,4 +50,7 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
 // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha14"
+    implementation 'com.google.api-client:google-api-client-android:1.23.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.23.0'
+    implementation 'com.google.apis:google-api-services-vision:v1-rev369-1.23.0'
 }
