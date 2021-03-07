@@ -1,23 +1,27 @@
 package com.htbcoolcrew.breadboi
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import java.util.concurrent.Executors
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.api.client.extensions.android.json.AndroidJsonFactory
+import com.google.api.client.http.javanet.NetHttpTransport
+import com.google.api.services.vision.v1.Vision
+import com.google.api.services.vision.v1.VisionRequestInitializer
 import kotlinx.android.synthetic.main.activity_camera.*
 import java.io.File
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 
 typealias LumaListener = (luma: Double) -> Unit
@@ -28,11 +32,16 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
 
-
+    var visionBuilder = Vision.Builder(
+        NetHttpTransport(),
+        AndroidJsonFactory(),
+        null
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
-
+        visionBuilder.setVisionRequestInitializer(VisionRequestInitializer("keyyy"))
+        val vision = visionBuilder.build()
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
@@ -104,6 +113,7 @@ class CameraActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
             requestCode: Int, permissions: Array<String>, grantResults:
             IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
