@@ -18,20 +18,7 @@ import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
-import com.google.api.client.extensions.android.http.AndroidHttp
-import com.google.api.client.googleapis.json.GoogleJsonResponseException
-import com.google.api.client.http.HttpTransport
-import com.google.api.client.json.JsonFactory
-import com.google.api.client.json.gson.GsonFactory
-import com.google.api.services.vision.v1.Vision
-import com.google.api.services.vision.v1.VisionRequest
-import com.google.api.services.vision.v1.VisionRequestInitializer
-import com.google.api.services.vision.v1.model.AnnotateImageRequest
-import com.google.api.services.vision.v1.model.BatchAnnotateImagesRequest
-import com.google.api.services.vision.v1.model.BatchAnnotateImagesResponse
-import com.google.api.services.vision.v1.model.EntityAnnotation
-import com.google.api.services.vision.v1.model.Feature
-import com.google.api.services.vision.v1.model.Image
+
 
 typealias LumaListener = (luma: Double) -> Unit
 
