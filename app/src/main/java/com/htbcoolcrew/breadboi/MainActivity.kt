@@ -31,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(this, CAMERA_PERMISSION, CAMERA_REQUEST_CODE)
-//        ActivityCompat.requestPermissions(this, NET_PERMS, NET_REQUEST_CODE)
-//        ActivityCompat.requestPermissions(this, WRITE_PERM, STORAGE_PERMISSION_CODE)
+        ActivityCompat.requestPermissions(this, NET_PERMS, NET_REQUEST_CODE)
+        ActivityCompat.requestPermissions(this, WRITE_PERM, STORAGE_PERMISSION_CODE)
 
     }
 
